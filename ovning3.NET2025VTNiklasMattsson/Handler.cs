@@ -11,16 +11,6 @@ internal class Handler
 {
     public void Play()
     {
-        // var vehicle = new Vehicle();  
-        // try
-        //{
-        //  vehicle.Brand = "v";
-        // }
-        //catch (ArgumentException err)
-        //{
-        //	Console.WriteLine(value: err.Message);
-        //}
-        
         var brakeFail = new BrakeFailureError();
         var engineFail = new EngineFailureError();
         var transmissionFail = new TransmissionError();
