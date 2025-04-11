@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ovning3.NET2025VTNiklasMattsson.Core
+namespace ovning3.NET2025VTNiklasMattsson.Core;
+
+public interface ICleanable
 {
-    internal class Class4
-    {
-    }
+    void Clean();
 }

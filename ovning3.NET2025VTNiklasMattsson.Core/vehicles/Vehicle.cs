@@ -1,12 +1,21 @@
-﻿namespace ovning3.NET2025VTNiklasMattsson.Core;
+﻿using System.Xml.Linq;
+namespace ovning3.NET2025VTNiklasMattsson.Core.vehicles;
 
-public class Vehicle
+public abstract class Vehicle
 {
-    private string brand;
-    private string model;
+    private string brand = "";
+    private string model = "";
     private int year;
     private double weight;
 
+    public Vehicle(string brandValue, string modelValue, int yearValue, double weightValue)
+    {
+        Brand = brandValue;
+        Model = modelValue;
+        Year = yearValue;
+        Weight = weightValue;
+    }
+    
     public string Brand
     {
         get => brand;
@@ -19,7 +28,7 @@ public class Vehicle
     }
     public string Model
     {
-        get => Model;
+        get => model;
         set
         {
             if (value.Length < 2 || value.Length > 20)
@@ -29,7 +38,7 @@ public class Vehicle
     }
     public int Year
     {
-        get => Year;
+        get => year;
         set
         {
             int currentYear = DateTime.Now.Year;
@@ -40,12 +49,18 @@ public class Vehicle
     }
     public double Weight
     {
-        get => Weight;
+        get => weight;
         set
         {
-            if (weight <= 0.0)
+            if (value <= 0.0)
                 throw new ArgumentException($"Vikten måste vara större än 0.0");
             weight = value;
         }
     }
+    public string Stats()
+    {
+        return $"Märke:{brand} Modell:{model} Årsmodell:{year} Vikt:{weight}    {SpecificStats()}";
+    }
+    public abstract void StartEngine();
+    public abstract string SpecificStats();
 }
